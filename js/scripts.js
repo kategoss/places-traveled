@@ -1,31 +1,36 @@
 // business logic
-function Contact(first, last) {
-  this.firstName = first;
-  this.lastName = last;
+function Location(city, country, climate, notes, cost) {
+  this.locationCity = city;
+  this.locationCountry = country;
+  this.locationClimate = climate;
+  this.locationNotes = notes;
+  this.locationCost = cost;
 }
-
 
 
 // user interface logic
 $(document).ready(function() {
-  $("form#new-contact").submit(function(event) {
+  $("form#new-location").submit(function(event) {
     event.preventDefault();
 
-    var inputtedFirstName = $("input#new-first-name").val();
-    var inputtedLastName = $("input#new-last-name").val();
+    var inputtedCity = $("input#new-city").val();
+    var inputtedCountry = $("input#new-country").val();
+    var inputtedClimate = $("input#new-climate").val();
+    var inputtedCost = $("input#new-cost").val();
+    var inputtedNotes = $("input#new-notes").val();
 
-    var newContact = new Contact(inputtedFirstName, inputtedLastName);
+    var newLocation = new Location(inputtedCity, inputtedCountry, inputtedClimate, inputtedCost, inputtedNotes);
 
-    $("ul#contacts").append("<li><span class='contact'>" + newContact.firstName + "</span></li>");
+    $("ul#destinations").append("<li><span class='destination'>" + newLocation.locationCity + "</span></li>");
 
-    // $("input#new-first-name").val("");
-    // $("input#new-last-name").val("");
-
-    $(".contact").last().click(function() {
-    $("#show-contact").show();
-    $("#show-contact h2").text(newContact.firstName);
-    $(".first-name").text(newContact.firstName);
-    $(".last-name").text(newContact.lastName);
+    $(".destination").last().click(function() {
+    $("#show-destinations").show();
+    $("#show-destinations h2").text(newLocation.locationCity);
+    $(".city").text(newLocation.locationCity);
+    $(".country").text(newLocation.locationCountry);
+    $(".climate").text(newLocation.locationClimate);
+    $(".cost").text(newLocation.locationCost);
+    $(".notes").text(newLocation.locationNotes);
     });
   });
 });
